@@ -38,8 +38,6 @@ window.addEventListener("load", function() {
         let cargoLevel = cargoMassInput.value;
         let list = document.getElementById("faultyItems");
 
-        list.style.visibility = "hidden";
-
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
     });
     

@@ -18,14 +18,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 //_____Validate different input types here(string, number, etc)____
 
-function validateInput(testInput) {
-    if (testInput === "") {
+function validateInput(input) {
+    if (input === "") {
         return "Empty";
     }
-    else if (isNaN(testInput) === true) {
+    else if (isNaN(input) === true) {
         return "Not a Number";
     }
-    else if (isNaN(testInput) === false) {
+    else if (isNaN(input) === false) {
         return "Is a Number";
     }
 }
@@ -33,7 +33,7 @@ function validateInput(testInput) {
 //____Adding Alerts after validating testInputs if Empty or NaN_______
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    
+
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" ||
@@ -63,14 +63,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         if (fuelLevel < 10000) {
             launchStatus.innerHTML = `Shuttle not ready for launch`;
-            fuelStatus.innerHTML = `Fuel levels too low for launch`;
+            // fuelStatus.innerHTML = `Fuel levels too low for launch`;
             launchStatus.style.color = "red";
             listStatus.style.visibility = "visible";
         }
 
         else if (cargoLevel > 10000) {
             launchStatus.innerHTML = `Shuttle not ready for launch`;
-            cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+            // cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
             launchStatus.style.color = "red";
             listStatus.style.visibility = "visible";
         }
@@ -78,7 +78,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         else if (fuelLevel >= 10000 && cargoLevel <= 10000) {
             launchStatus.innerHTML = `Shuttle is ready for launch`;
             launchStatus.style.color = "green";
-        
         }
     }
 }

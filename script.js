@@ -3,7 +3,6 @@
 // const { formSubmission } = require("./scriptHelper"); --something christian said could help with chcecking/testing while working
 
 window.addEventListener("load", function() {
-
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse;
@@ -18,7 +17,6 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
 
     form.addEventListener("submit", function(event) {
-        event.preventDefault();
         
         let pilotName = document.querySelector("input[name=pilotName]");
         let pilot = pilotName.value;

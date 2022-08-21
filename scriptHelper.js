@@ -33,7 +33,6 @@ function validateInput(input) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
-    // list.style.visibility = "hidden";
 
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||

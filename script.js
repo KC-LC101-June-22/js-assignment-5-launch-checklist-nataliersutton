@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-// const { formSubmission } = require("./scriptHelper"); --something christian said could help with chcecking/testing while working
+// const { formSubmission } = require("./scriptHelper"); --something christian said could help with checking/testing while working?
 
 window.addEventListener("load", function() {
     let listedPlanets;

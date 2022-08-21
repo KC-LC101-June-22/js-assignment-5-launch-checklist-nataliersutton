@@ -2,8 +2,8 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-const div = document.getElementById("missionTarget");
-    div.innerHTML = ` 
+const missionDiv = document.getElementById("missionTarget");
+    missionDiv.innerHTML = ` 
     <h2> Mission Destination</h2>
         <ol>
             <li>Name: ${name} </li>
@@ -15,14 +15,13 @@ const div = document.getElementById("missionTarget");
         `;
 }
 
-
 //_____Validate different input types here(string, number, etc)____
 
-function validateInput(input) {
-    if (input === "") {
+function validateInput(testInput) {
+    if (testInput === "") {
         return "Empty";
     }
-    else if (isNaN(input)) {
+    else if (isNaN(testInput)) {
         return "Not a Number";
     }
     else {
@@ -33,6 +32,8 @@ function validateInput(input) {
 //____Adding Alerts after validating testInputs if Empty or NaN_______
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    
+    list.style.visibility = "hidden";
 
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
@@ -91,7 +92,7 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        return response.json;
+        return response.json();
         });
 
     return planetsReturned;

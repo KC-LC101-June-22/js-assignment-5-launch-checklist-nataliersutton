@@ -37,7 +37,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" ||
-        validateInput(cargoLevel) === "Empty" || ) {
+        validateInput(cargoLevel) === "Empty" ) {
         alert("Input in all fields is required!");
 
         list.style.visibility = "";
@@ -89,7 +89,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
     let planetsReturned;
-    
+
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         return response.json;
         });

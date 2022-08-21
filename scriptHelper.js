@@ -22,16 +22,39 @@ function validateInput(testInput) {
     if (testInput === "") {
         return "Empty";
     }
-    else if (isNaN(testInput)) {
+    else if (isNaN(testInput) === true) {
         return "Not a Number";
     }
-    else {
+    else if (isNaN(testInput) === false) {
         return "Is a Number";
     }
 }
 
+//____Adding Alerts after validating testInputs_______
+
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+   if ( validateInput(pilot) === "Empty" ||
+        validateInput(copilot) === "Empty" ||
+        validateInput(fuelLevel) === "Empty" ||
+        validateInput(cargoLevel) === "Empty" ||
+        validateInput(list) === "Empty" ) {
+        alert("Input in all fields is required!");
+    }
+
+    else if ( 
+        validateInput(fuelLevel) === "Not a Number" ||
+        validateInput(cargoLevel) === "Not a Number") {
+        alert("Please make sure inputs for the Fuel Level and the Cargo Level are numbers.");
+    }
+
+    else {
+        let pilotStatus = document.getElementById("pilotStatus")
+        let copilotStatus = document.getElementById("copilotStatus")
+        let fuelStatus = document.getElementById("fuelStatus")
+        let cargoStatus = document.getElementById("cargoStatus")
+        let launchStatus = document.getElementById("launchStatus")
+        let listStatus = document.getElementById("list")
+    }
 }
 
 async function myFetch() {

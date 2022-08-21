@@ -1,8 +1,5 @@
 // Write your JavaScript code here!
 
-// const { formSubmission, myFetch, pickPlanet, addDestinationInfo } = require("./scriptHelper"); 
-// --something christian said could help with checking/testing while working?
-
 window.addEventListener("load", function() {
     let listedPlanets;
     let listedPlanetsResponse = myFetch();
@@ -27,6 +24,7 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
 
     form.addEventListener("submit", function(event) {
+        event.preventDefault();
         
         let pilotName = document.querySelector("input[name=pilotName]");
         let pilot = pilotName.value;

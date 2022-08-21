@@ -17,11 +17,11 @@ const missionDiv = document.getElementById("missionTarget");
 
 //_____Validate different input types here(string, number, etc)____
 
-function validateInput(testInput) {
-    if (testInput === "") {
+function validateInput(input) {
+    if (input === "") {
         return "Empty";
     }
-    else if (isNaN(testInput)) {
+    else if (isNaN(input)) {
         return "Not a Number";
     }
     else {
@@ -71,21 +71,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         }
 
-        else if (cargoLevel >= 10000) {
-            launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
-            cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
-            launchStatus.style.color = "rgb(199, 37, 78)";
-            listStatus.style.visibility = "visible";
+            else if (cargoLevel >= 10000) {
+                launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
+                cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+                launchStatus.style.color = "rgb(199, 37, 78)";
+                listStatus.style.visibility = "visible";
 
-        }
+            }
 
-        else {
-            launchStatus.innerHTML = `Shuttle is Ready for Launch`;
-            launchStatus.style.color = "rgb(65, 159, 106)";
-            listStatus.style.visibility = "visible";
-            fuelStatus.innerHTML = `Fuel level high enough for launch`;
-            cargoStatus.innerHTML = `Cargo mass low enough for launch`;
-        }
+            else {
+                launchStatus.innerHTML = `Shuttle is Ready for Launch`;
+                launchStatus.style.color = "rgb(65, 159, 106)";
+                listStatus.style.visibility = "visible";
+                fuelStatus.innerHTML = `Fuel level high enough for launch`;
+                cargoStatus.innerHTML = `Cargo mass low enough for launch`; 
+            }
     }
 }
 

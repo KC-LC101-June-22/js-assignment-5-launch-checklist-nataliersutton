@@ -6,18 +6,16 @@ window.addEventListener("load", function() {
 
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-        // console.log(listedPlanets);
     }).then(function () {
-        // console.log(listedPlanets);
-        let pickedPlanet = pickPlanet(listedPlanets);
+        let selectedPlanet = pickPlanet(listedPlanets);
         addDestinationInfo (
             document,
-            pickedPlanet.name,
-            pickedPlanet.diameter,
-            pickedPlanet.star,
-            pickedPlanet.distance,
-            pickedPlanet.moons,
-            pickedPlanet.image
+            selectedPlanet.name,
+            selectedPlanet.diameter,
+            selectedPlanet.star,
+            selectedPlanet.distance,
+            selectedPlanet.moons,
+            selectedPlanet.image
         );
     });
 

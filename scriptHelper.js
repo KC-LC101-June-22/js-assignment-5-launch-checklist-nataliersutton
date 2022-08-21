@@ -40,6 +40,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         validateInput(cargoLevel) === "Empty" ||
         validateInput(list) === "Empty" ) {
         alert("Input in all fields is required!");
+
+        list.style.visibility = "";
     }
 
     else if ( 
@@ -47,8 +49,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         validateInput(cargoLevel) === "Not a Number") {
         alert("Please make sure inputs for the Fuel Level and the Cargo Level are numbers.");
     }
-
-    list.style.visibility = "";
 
     // _______Upodating status information based on given parameters and changing template literal text output and color____________
 

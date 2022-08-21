@@ -2,19 +2,19 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
-                <h2>Mission Destination</h2>
-                <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
-                </ol>
-                <img src="">
-   */
+const div = document.getElementById("missionTarget");
+    div.innerHTML = ` 
+    <h2> Mission Destination</h2>
+        <ol>
+            <li>Name: ${name} </li>
+            <li>Diameter: ${diameter} </li>
+            <li>Star: ${star}</li>
+            <li>Distance from Earth: ${distance} </li>
+            <li>Number of Moons: ${moons}</li>
+        </ol><img src="${imageUrl}" />
+        `;
 }
+
 
 //_____Validate different input types here(string, number, etc)____
 
@@ -25,7 +25,7 @@ function validateInput(input) {
     else if (isNaN(input)) {
         return "Not a Number";
     }
-    else if (isNaN(input) === false) {
+    else {
         return "Is a Number";
     }
 }
@@ -37,8 +37,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" ||
-        validateInput(cargoLevel) === "Empty" ||
-        validateInput(list) === "Empty" ) {
+        validateInput(cargoLevel) === "Empty" || ) {
         alert("Input in all fields is required!");
 
         list.style.visibility = "";
@@ -78,7 +77,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             listStatus.style.visibility = "visible";
         }
 
-        else if (fuelLevel >= 10000 && cargoLevel <= 10000) {
+        else {
             launchStatus.innerHTML = `Shuttle is Ready for Launch`;
             launchStatus.style.color = "rgb(65, 159, 106)";
             listStatus.style.visibility = "visible";
@@ -90,14 +89,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
     let planetsReturned;
-
-    planetsReturned = await fetch().then( function(response) {
+    
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json;
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    let randomPlanet = (Math.floor(Math.random()*planets.length));
+    return planets[randomPlanet];
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;

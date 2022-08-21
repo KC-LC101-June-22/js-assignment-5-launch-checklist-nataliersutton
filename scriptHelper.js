@@ -30,9 +30,10 @@ function validateInput(testInput) {
     }
 }
 
-//____Adding Alerts after validating testInputs_______
+//____Adding Alerts after validating testInputs if Empty or NaN_______
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" ||
@@ -47,13 +48,38 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         alert("Please make sure inputs for the Fuel Level and the Cargo Level are numbers.");
     }
 
+    // _______Upodating status information based on given parameters and changing template literal text output and color____________
+
     else {
         let pilotStatus = document.getElementById("pilotStatus")
         let copilotStatus = document.getElementById("copilotStatus")
         let fuelStatus = document.getElementById("fuelStatus")
         let cargoStatus = document.getElementById("cargoStatus")
         let launchStatus = document.getElementById("launchStatus")
-        let listStatus = document.getElementById("list")
+        let listStatus = document.getElementById("faultyItems")
+
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready.`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready.`;
+
+        if (fuelLevel < 10000) {
+            launchStatus.innerHTML = `Shuttle not ready for launch`;
+            fuelStatus.innerHTML = `Fuel levels too low for launch`;
+            launchStatus.style.color = "red";
+            listStatus.style.visibility = "visible";
+        }
+
+        else if (cargoLevel > 10000) {
+            launchStatus.innerHTML = `Shuttle not ready for launch`;
+            cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+            launchStatus.style.color = "red";
+            listStatus.style.visibility = "visible";
+        }
+
+        else if (fuelLevel >= 10000 && cargoLevel <= 10000) {
+            launchStatus.innerHTML = `Shuttle is ready for launch`;
+            launchStatus.style.color = "green";
+        
+        }
     }
 }
 

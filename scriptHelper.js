@@ -33,7 +33,7 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
-    list.style.visibility = "hidden";
+    listStatus.style.visibility = "hidden";
 
    if ( validateInput(pilot) === "Empty" ||
         validateInput(copilot) === "Empty" ||
@@ -41,13 +41,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         validateInput(cargoLevel) === "Empty" ) {
         alert("Input in all fields is required!");
 
-        list.style.visibility = "hidden";
+        listStatus.style.visibility = "hidden";
     }
 
     else if ( 
         validateInput(fuelLevel) === "Not a Number" ||
         validateInput(cargoLevel) === "Not a Number") {
         alert("Please make sure inputs for the Fuel Level and the Cargo Level are numbers.");
+        listStatus.style.visibility = "hidden";
     }
 
     // _______Upodating status information based on given parameters and changing template literal text output and color____________
@@ -69,15 +70,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             fuelStatus.innerHTML = `Fuel level too low for launch`;
             launchStatus.style.color = "rgb(199, 37, 78)";
             listStatus.style.visibility = "visible";
-            cargoStatus.innerHTML = `Cargo mass low enough for launch`;
+
         }
 
-        if (cargoLevel > 10000) {
+        else if (cargoLevel > 10000) {
             launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
             cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
             launchStatus.style.color = "rgb(199, 37, 78)";
             listStatus.style.visibility = "visible";
-            fuelStatus.innerHTML = `Fuel level high enough for launch`;
+
         }
 
         else {

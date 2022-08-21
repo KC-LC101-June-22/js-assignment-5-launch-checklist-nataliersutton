@@ -22,7 +22,7 @@ function validateInput(input) {
     if (input === "") {
         return "Empty";
     }
-    else if (isNaN(input) === true) {
+    else if (isNaN(input)) {
         return "Not a Number";
     }
     else if (isNaN(input) === false) {
@@ -47,6 +47,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         validateInput(cargoLevel) === "Not a Number") {
         alert("Please make sure inputs for the Fuel Level and the Cargo Level are numbers.");
     }
+
+    list.style.visibility = "";
 
     // _______Upodating status information based on given parameters and changing template literal text output and color____________
 
@@ -76,10 +78,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             listStatus.style.visibility = "visible";
         }
 
-        else if (fuelLevel >= 9999 && cargoLevel <= 9999) {
+        else if (fuelLevel >= 10000 && cargoLevel <= 10000) {
             launchStatus.innerHTML = `Shuttle is Ready for Launch`;
             launchStatus.style.color = "rgb(65, 159, 106)";
             listStatus.style.visibility = "visible";
+            fuelStatus.innerHTML = `Fuel level high enough for launch`;
+            cargoStatus.innerHTML = `Cargo mass low enough for launch`;
         }
     }
 }

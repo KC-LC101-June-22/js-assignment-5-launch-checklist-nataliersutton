@@ -23,7 +23,6 @@ window.addEventListener("load", function() {
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
-        document.getElementById("formSubmit").addEventListener("click",function(event) {
 
         let pilotName = document.querySelector("input[name=pilotName]");
         let pilot = pilotName.value;
@@ -37,6 +36,5 @@ window.addEventListener("load", function() {
         list.style.visibility = "hidden";
 
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-        });
     });
 });

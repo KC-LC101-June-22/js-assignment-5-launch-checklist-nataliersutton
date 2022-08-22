@@ -1,6 +1,8 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
+//_____Information for Mission Destination template literal____
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 const missionDiv = document.getElementById("missionTarget");
     missionDiv.innerHTML = ` 
